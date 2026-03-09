@@ -2,6 +2,9 @@ import sys
 import time
 
 def cetak_lirik():
+    # Mendefinisikan kode ANSI untuk warna Ungu dan Reset
+    UNGU = '\033[95m'
+    RESET = '\033[0m'
 
     lirik = [
         ("We always dreamed about this better life,", 0.05, 0.1),
@@ -25,11 +28,12 @@ def cetak_lirik():
         ("yeah everything is alright", 0.10, 0.4),
         ("We got the keys to open paradise,", 0.06, 0.1),
         ("yeah paradise...", 0.07, 0.2),
-        ("It feels like...", 0.10, 2.0),
-        ("WE COULD DO THIS ALL NIGHT!", 0.08, 2.0)
+        ("It feels like...", 0.10, 2.2),
+        ("WE COULD DO THIS ALL NIGHT!", 0.10, 1.0)
     ]
 
-    print("\n--- IVE, Saweetie - All Night ---\n")
+    # Menyalakan warna ungu mulai dari judul lagu
+    print(f"\n{UNGU}--- IVE, Saweetie - All Night ---\n")
     time.sleep(1)
 
     for baris, kecepatan, jeda in lirik:
@@ -41,10 +45,12 @@ def cetak_lirik():
         print() 
         time.sleep(jeda)
 
-    print("\n--- Tycami Tech ---")
+    # Mematikan warna ungu (Reset) setelah lirik selesai
+    print(f"\n--- Tycami Tech ---{RESET}")
 
 if __name__ == "__main__":
     try:
         cetak_lirik()
     except KeyboardInterrupt:
-        print("\n\nMusik dihentikan.")
+        # Jika dihentikan paksa (Ctrl+C), pastikan warna terminal kembali normal
+        print("\033[0m\n\nPaused.")
